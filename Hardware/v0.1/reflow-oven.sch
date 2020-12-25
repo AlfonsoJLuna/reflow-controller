@@ -144,7 +144,7 @@ Connection ~ 5700 1700
 Wire Wire Line
 	5700 1700 5700 1800
 Text Label 5700 1250 2    50   ~ 0
-3V3
+3V3_2
 Wire Wire Line
 	4550 1350 4300 1350
 Wire Wire Line
@@ -275,14 +275,14 @@ T+
 $Comp
 L _AKL_Connector:WJ124-3.81-2P J2
 U 1 1 5FE5C187
-P 2500 1250
+P 2500 1350
 F 0 "J2" H 2600 1250 50  0000 L CNN
-F 1 "WJ124-3.81-2P" H 2600 1150 50  0000 L CNN
-F 2 "_AKL_Connector:WJ124-3.81-2P" H 2500 1250 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 2500 1250 50  0001 C CNN
-F 4 "WJ124-3.81-2P" H 2500 1250 50  0001 C CNN "MPN"
-	1    2500 1250
-	-1   0    0    -1  
+F 1 "WJ124-3.81-2P" H 2600 1350 50  0000 L CNN
+F 2 "_AKL_Connector:WJ124-3.81-2P" H 2500 1350 50  0001 C CNN
+F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 2500 1350 50  0001 C CNN
+F 4 "WJ124-3.81-2P" H 2500 1350 50  0001 C CNN "MPN"
+	1    2500 1350
+	-1   0    0    1   
 $EndComp
 $Comp
 L power:GND #PWR09
@@ -469,12 +469,8 @@ Wire Wire Line
 	8500 3600 8600 3600
 Wire Wire Line
 	2350 4300 3050 4300
-Text Label 3050 4500 2    50   ~ 0
-3V3
 Text Label 4750 2800 0    50   ~ 0
 3V3
-Text Label 4750 2600 0    50   ~ 0
-5V
 Wire Wire Line
 	2350 4400 2400 4400
 $Comp
@@ -613,11 +609,11 @@ Wire Wire Line
 	3400 5400 3550 5400
 Text Label 3550 5400 2    50   ~ 0
 3V3
-Text Label 4750 2900 0    50   ~ 0
+Text Label 3050 2900 2    50   ~ 0
 BTN_A
 Text Label 4750 3100 0    50   ~ 0
 BTN_B
-Text Label 4750 3200 0    50   ~ 0
+Text Label 4750 2900 0    50   ~ 0
 BTN_C
 $Comp
 L power:GND #PWR08
@@ -634,9 +630,9 @@ Wire Wire Line
 	5200 4200 5200 4100
 Wire Wire Line
 	5200 4100 5300 4100
-Text Label 3050 3800 2    50   ~ 0
-OUT1
 Text Label 3050 3900 2    50   ~ 0
+OUT1
+Text Label 3050 3800 2    50   ~ 0
 OUT2
 Text Label 3050 2600 2    50   ~ 0
 CS2
@@ -660,7 +656,7 @@ Wire Wire Line
 Wire Wire Line
 	5000 6350 5000 6450
 Text Label 5100 6050 2    50   ~ 0
-3V3
+3V3_2
 Text Label 5800 6050 0    50   ~ 0
 DC
 Text Label 5800 6150 0    50   ~ 0
@@ -717,7 +713,6 @@ Wire Wire Line
 Text Label 4750 3900 0    50   ~ 0
 BUZZER
 NoConn ~ 4750 4000
-NoConn ~ 3050 2900
 NoConn ~ 3050 4000
 NoConn ~ 3050 4100
 NoConn ~ 3050 4200
@@ -771,4 +766,8 @@ F 3 "" H 10700 6150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10700 6100 10700 6150
+NoConn ~ 4750 2600
+NoConn ~ 4750 3200
+Text Label 3050 4500 2    50   ~ 0
+3V3_2
 $EndSCHEMATC
