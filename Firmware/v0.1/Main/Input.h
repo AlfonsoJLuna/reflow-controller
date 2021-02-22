@@ -1,6 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include "Configuration.h"
 
 void Input_Init();
 void Input_Process();

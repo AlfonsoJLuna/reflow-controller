@@ -4,14 +4,14 @@
 #include <Adafruit_ST7789.h>
 
 
-Adafruit_ST7789 display = Adafruit_ST7789(PA4, PA2, PA3);
+Adafruit_ST7789 display = Adafruit_ST7789(LCDCS, LCDDC, LCDRST);
 
 
 void Display_Init()
 {
     // Turn display backlight on
-    pinMode(PA6, OUTPUT);
-    digitalWrite(PA6, HIGH);
+    pinMode(LCDBL, OUTPUT);
+    digitalWrite(LCDBL, HIGH);
 
     display.init(240, 320);
     display.fillScreen(COLOR_BLACK);

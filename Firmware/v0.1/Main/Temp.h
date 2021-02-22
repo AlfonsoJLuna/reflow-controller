@@ -1,6 +1,7 @@
 #ifndef TEMP_H
 #define TEMP_H
 
+#include "Configuration.h"
 
 #include <stdint.h>
 

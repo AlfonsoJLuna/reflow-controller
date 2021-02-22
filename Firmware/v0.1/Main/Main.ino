@@ -1,3 +1,4 @@
+#include "Configuration.h"
 #include "Input.h"
 #include "Display.h"
 #include "Temp.h"
@@ -11,9 +12,9 @@
 
 
 // Buzzer and relay outputs
-// pinMode(PC13, OUTPUT);
-// pinMode(PB5, OUTPUT);
-// pinMode(PB6, OUTPUT);
+// pinMode(BUZZER, OUTPUT);
+// pinMode(OUT1, OUTPUT);
+// pinMode(OUT2, OUTPUT);
 
 
 void setup()
