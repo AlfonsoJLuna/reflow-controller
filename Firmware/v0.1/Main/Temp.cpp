@@ -1,22 +1,32 @@
 #include "Temp.h"
 #include "Display.h"
 #include <Arduino.h>
+
+#ifndef __USE_MAX6675__
 #include <Adafruit_MAX31855.h>
+#else
+#include <max6675.h>
+#endif
 
-
-Adafruit_MAX31855 thermocouple(PB13, PB12, PB14);
-
+#ifndef __USE_MAX6675__
+Adafruit_MAX31855 thermocouple(MAXCLK, MAXCS, MAXDO);
+#else
+MAX6675 thermocouple(MAXCLK, MAXCS, MAXDO);
+#endif
 
 void Temp_Init()
 {
+#ifndef __USE_MAX6675__
     if (thermocouple.begin() == 0)
     {
         Display_Text_Center_Small("THERMOCOUPLE ERROR", 0);
     }
+#endif
 }
 
 int16_t Temp_Read_Ambient()
 {
+#ifndef __USE_MAX6675__
     double temp_internal = thermocouple.readInternal();
 
     if (isnan(temp_internal))
@@ -26,6 +36,9 @@ int16_t Temp_Read_Ambient()
     }
 
     return round(temp_internal);
+#else
+    return 21;
+#endif
 }
 
 int16_t Temp_Read_Oven()
