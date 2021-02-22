@@ -12,7 +12,7 @@ Feel free to build one yourself! The components have been carefully chosen to be
 
 * [Gerbers](https://github.com/AlfonsoJLuna/reflow-oven/tree/master/Hardware/v0.1/Gerbers)
 * [Schematics](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/reflow-oven.pdf)
-* [Interactive BOM](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/ibom.html)
+* [Interactive BOM](http://htmlpreview.github.io/?https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/ibom.html)
 
 ## About the firmware
 
