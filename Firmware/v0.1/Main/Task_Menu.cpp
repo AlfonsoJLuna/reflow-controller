@@ -15,8 +15,9 @@ void Task_Menu()
     uint8_t menu_option = 0;
 
     Display_Clear();
-
+#ifndef __USE_MAX6675__
     Display_Text_Center_Small("AMBIENT:", 1);
+#endif
     Display_Text_Center_Small("OVEN:", 4);
     Display_Text_Center_Small("SELECT PASTE:", 8);
     Display_Text_Left_Menu("Sn42/Bi57.6/Ag0.4", 10);
@@ -61,8 +62,9 @@ void Task_Menu()
         if (current_millis >= (last_millis_temp + 1000))
         {
             last_millis_temp = current_millis;
-
+#ifndef __USE_MAX6675__
             Display_Temperature(Temp_Read_Ambient(), 2, COLOR_BLUE);
+#endif
             Display_Temperature(Temp_Read_Oven(), 5, COLOR_RED);
         }
     }

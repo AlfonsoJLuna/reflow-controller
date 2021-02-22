@@ -29,9 +29,9 @@ static uint64_t last_c_press = 0;
 
 void Input_Init()
 {
-    pinMode(PB15, INPUT);
-    pinMode(PB1, INPUT);
-    pinMode(PB10, INPUT);
+    pinMode(BTNA, INPUT);
+    pinMode(BTNB, INPUT);
+    pinMode(BTNC, INPUT);
 }
 
 // Button debounce
@@ -40,7 +40,7 @@ void Input_Process()
     uint64_t current_millis = millis();
 
     // A
-    if (digitalRead(PB15) == 1)
+    if (digitalRead(BTNA) == 1)
     {
         if (a == 0)
         {
@@ -68,7 +68,7 @@ void Input_Process()
     }
 
     // B
-    if (digitalRead(PB1) == 1)
+    if (digitalRead(BTNB) == 1)
     {
         if (b == 0)
         {
@@ -96,7 +96,7 @@ void Input_Process()
     }
 
     // C
-    if (digitalRead(PB10) == 1)
+    if (digitalRead(BTNC) == 1)
     {
         if (c == 0)
         {

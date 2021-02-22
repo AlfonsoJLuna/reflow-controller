@@ -1,7 +1,7 @@
 #ifndef PROFILE_H
 #define PROFILE_H
 
-
+#include "Configuration.h"
 #include <stdint.h>
 
 
