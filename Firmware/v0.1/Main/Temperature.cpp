@@ -54,5 +54,5 @@ int16_t Temperature_Read_Oven()
         return 999;
     }
 
-    return round(temp_oven);
+    return round(temp_oven + TEMP_OFFSET);
 }
