@@ -1,10 +1,18 @@
 # reflow-oven
 
-Work-in-progress controller for home-made reflow ovens.
+Open-source controller for home-made reflow ovens.
+
+![](Images/Front.jpg) | ![](Images/Back.jpg)
+:---: | :---:
+Front | Back
 
 ## About the hardware
 
-To do...
+Feel free to build one yourself! The components have been carefully chosen to be easy to source and assemble by hand.
+
+* [Gerbers](https://github.com/AlfonsoJLuna/reflow-oven/tree/master/Hardware/v0.1/Gerbers)
+* [Schematics](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/reflow-oven.pdf)
+* [Interactive BOM](http://htmlpreview.github.io/?https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/ibom.html)
 
 ## About the firmware
 
@@ -23,3 +31,11 @@ To do...
     * `Adafruit ST7735 and ST7789 Library 1.6.0`
 8. Reset the board in DFU mode: hold BOOT0, hold NRST, release NRST, release BOOT0. `STM32 BOOTLOADER` should appear in Windows Device Manager.
 9. Press the `Upload` button in the Arduino IDE.
+
+### To do
+
+* PID controlled outputs with configurable parameters.
+* Configurable temperature offset.
+* Buzzer should beep when the door needs to be open.
+* Retrieve profile names for the menu.
+* Proper temperature/time values for the profiles.
