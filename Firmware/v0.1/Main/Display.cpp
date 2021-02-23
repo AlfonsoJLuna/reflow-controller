@@ -69,7 +69,7 @@ void Display_Text_Center_Big(char* text, uint8_t row)
 void Display_Text_Left_Menu(char* text, uint8_t row)
 {
     display.setTextSize(2);
-    display.setCursor(12, row * 20);
+    display.setCursor(24, row * 20);
     display.setTextColor(COLOR_WHITE, COLOR_BLACK);
     display.print(text);
 }

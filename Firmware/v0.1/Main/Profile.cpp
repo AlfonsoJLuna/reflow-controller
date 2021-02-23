@@ -2,12 +2,12 @@
 #include <Arduino.h>
 
 
-// All profiles should start with time = 0, temp = 50 and end with time = 400
+// All profiles should start with time = 0, temp = 50 and end with time = 400, temp = 50
 
 
 typedef struct
 {
-    char name[20];
+    char name[19];
     uint16_t time[10];
     uint16_t temp[10];
 } profile_t;
@@ -24,7 +24,7 @@ static profile_t profile0 =
 
     // Temperature
     {
-        50, 100, 150, 250, 250, 0, 0, 0, 0, 0
+        50, 100, 150, 250, 250, 50, 50, 50, 50, 50
     }
 };
 
@@ -34,12 +34,12 @@ static profile_t profile1 =
 
     // Time
     {
-        0, 100, 200, 240, 260, 400, 400, 400, 400, 400
+        0, 50, 100, 150, 200, 250, 300, 350, 400, 400
     },
 
     // Temperature
     {
-        50, 100, 150, 250, 250, 0, 0, 0, 0, 0
+        50, 200, 50, 100, 50, 250, 50, 150, 50, 50
     }
 };
 
@@ -49,12 +49,12 @@ static profile_t profile2 =
 
     // Time
     {
-        0, 100, 200, 240, 260, 400, 400, 400, 400, 400
+        0, 50, 100, 150, 200, 250, 300, 350, 400, 400
     },
 
     // Temperature
     {
-        50, 100, 150, 250, 250, 0, 0, 0, 0, 0
+        50, 50, 200, 200, 50, 50, 200, 200, 50, 50
     }
 };
 

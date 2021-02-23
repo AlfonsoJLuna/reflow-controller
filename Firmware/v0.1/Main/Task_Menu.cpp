@@ -2,6 +2,7 @@
 #include "Configuration.h"
 #include "Display.h"
 #include "Input.h"
+#include "Profile.h"
 #include "State.h"
 #include "Temperature.h"
 #include <Arduino.h>
@@ -13,6 +14,7 @@ void Task_Menu()
     uint64_t last_millis_menu = 0;
     uint64_t last_millis_temp = 0;
 
+    uint8_t profile_count = constrain(Profile_Get_Count(), 1, 4);
     uint8_t menu_option = 0;
 
     Display_Clear();
@@ -22,10 +24,12 @@ void Task_Menu()
     #endif
 
     Display_Text_Center_Small("OVEN:", 4);
-    Display_Text_Center_Small("SELECT PASTE:", 8);
-    Display_Text_Left_Menu("Sn42/Bi57.6/Ag0.4", 10);
-    Display_Text_Left_Menu("Sn63/Pb37", 11);
-    Display_Text_Left_Menu("Sn96.5/Ag3.0/Cu0.5", 12);
+    Display_Text_Center_Small("SELECT PROFILE:", 8);
+
+    for (int i = 0; i < profile_count; i++)
+    {
+        Display_Text_Left_Menu(Profile_Get_Name(i), 10 + i);
+    }
 
     Display_Option_A("UP");
     Display_Option_B("DOWN");
@@ -54,7 +58,7 @@ void Task_Menu()
 
             if (Input_Read_B() == 1)
             {
-                if (menu_option < 2)
+                if (menu_option < (profile_count - 1))
                 {
                     menu_option++;
                     Display_Arrow_Menu(menu_option);
@@ -73,6 +77,8 @@ void Task_Menu()
             Display_Temperature(Temperature_Read_Oven(), 5, COLOR_RED);
         }
     }
+
+    Profile_Set(menu_option);
 
     int16_t temp = Temperature_Read_Oven();
 
