@@ -75,14 +75,24 @@ uint8_t Profile_Get_Count()
     return profile_count;
 }
 
-void Profile_Set(uint8_t profile)
+char* Profile_Get_Name(uint8_t profile_no)
 {
-    current_profile = profile_list[profile];
+    if (profile_no < profile_count)
+    {
+        return profile_list[profile_no]->name;
+    }
+    else
+    {
+        return profile0.name;
+    }  
 }
 
-char* Profile_Get_Name()
+void Profile_Set(uint8_t profile_no)
 {
-    return current_profile->name;
+    if (profile_no < profile_count)
+    {
+        current_profile = profile_list[profile_no];
+    }
 }
 
 uint16_t Profile_Get_Temp(uint16_t time)

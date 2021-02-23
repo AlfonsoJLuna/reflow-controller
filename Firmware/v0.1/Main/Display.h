@@ -1,7 +1,7 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include "Configuration.h"
+
 #include <stdint.h>
 
 
@@ -34,8 +34,8 @@ void Display_Option_B(char* text);
 void Display_Option_C(char* text);
 
 void Display_Axis();
-void Display_Point_Real(uint16_t time, int16_t temp);
 void Display_Point_Profile(uint16_t time, int16_t temp);
+void Display_Point_Real(uint16_t time, int16_t temp);
 
 
 #endif

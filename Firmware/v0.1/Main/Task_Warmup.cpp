@@ -1,8 +1,8 @@
 #include "Task_Warmup.h"
-#include "State.h"
-#include "Input.h"
 #include "Display.h"
-#include "Temp.h"
+#include "Input.h"
+#include "State.h"
+#include "Temperature.h"
 #include <Arduino.h>
 
 
@@ -18,7 +18,6 @@ void Task_Warmup()
 
     Display_Text_Center_Small("TEMP < 50c", 1);
     Display_Text_Center_Small("WARMING UP...", 3);
-    
 
     Display_Option_C("CANCEL");
 
@@ -43,7 +42,7 @@ void Task_Warmup()
         {
             last_millis_temp = current_millis;
 
-            int16_t temp = Temp_Read_Oven();
+            int16_t temp = Temperature_Read_Oven();
 
             Display_Temperature(temp, 5, COLOR_RED);
 

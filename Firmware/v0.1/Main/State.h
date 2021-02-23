@@ -1,7 +1,6 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include "Configuration.h"
 
 typedef enum 
 { 
@@ -14,7 +13,7 @@ typedef enum
 } state_t;
 
 
-void State_Set(state_t new_state);
+void    State_Set(state_t new_state);
 state_t State_Get();
 
 

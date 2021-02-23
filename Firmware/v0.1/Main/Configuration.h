@@ -1,7 +1,20 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#define __USE_MAX6675__
+
+//////////////////////////////////////////////////
+// Temperature sensor selection
+//////////////////////////////////////////////////
+
+
+#define USE_MAX31855
+// #define USE_MAX6675
+
+
+//////////////////////////////////////////////////
+// Pin definitions
+//////////////////////////////////////////////////
+
 
 #define MAXDO   PB14
 #define MAXCS   PB12
@@ -21,5 +34,6 @@
 #define LCDRST  PA3
 #define LCDDC   PA2
 #define LCDBL   PA6
+
 
 #endif

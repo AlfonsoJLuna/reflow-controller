@@ -1,3 +1,4 @@
+#include "Configuration.h"
 #include "Input.h"
 #include <stdint.h>
 #include <Arduino.h>

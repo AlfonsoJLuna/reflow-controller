@@ -1,7 +1,9 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "Configuration.h"
+
+#include <stdbool.h>
+
 
 void Input_Init();
 void Input_Process();

@@ -1,3 +1,4 @@
+#include "Configuration.h"
 #include "Display.h"
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
@@ -185,18 +186,18 @@ void Display_Axis()
     display.print("400");
 }
 
-void Display_Point_Real(uint16_t time, int16_t temp)
-{
-    uint16_t x = constrain(map(time, 0, 400, 20, 230), 20, 230);
-    uint16_t y = constrain(map(temp, 0, 250, 260, 110), 110, 260);
-
-    display.drawPixel(x, y, COLOR_RED);
-}
-
 void Display_Point_Profile(uint16_t time, int16_t temp)
 {
     uint16_t x = constrain(map(time, 0, 400, 20, 230), 20, 230);
     uint16_t y = constrain(map(temp, 0, 250, 260, 110), 110, 260);
 
     display.drawPixel(x, y, COLOR_BLUE);
+}
+
+void Display_Point_Real(uint16_t time, int16_t temp)
+{
+    uint16_t x = constrain(map(time, 0, 400, 20, 230), 20, 230);
+    uint16_t y = constrain(map(temp, 0, 250, 260, 110), 110, 260);
+
+    display.drawPixel(x, y, COLOR_RED);
 }

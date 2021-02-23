@@ -1,8 +1,8 @@
 #include "Task_Reflow.h"
-#include "State.h"
-#include "Input.h"
 #include "Display.h"
-#include "Temp.h"
+#include "Input.h"
+#include "State.h"
+#include "Temperature.h"
 #include "Profile.h"
 #include <Arduino.h>
 
@@ -51,7 +51,7 @@ void Task_Reflow()
         {
             last_millis_temp = current_millis;
 
-            int16_t temp = Temp_Read_Oven();
+            int16_t temp = Temperature_Read_Oven();
 
             Display_Temperature(temp, 3, COLOR_RED);
 
