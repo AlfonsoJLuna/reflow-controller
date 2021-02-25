@@ -77,7 +77,7 @@ void Display_Text_Left_Menu(char* text, uint8_t row)
 void Display_Arrow_Menu(uint8_t row)
 {
     display.setTextSize(2);
-    display.setTextColor(COLOR_YELLOW, COLOR_BLACK);
+    display.setTextColor(COLOR_RED, COLOR_BLACK);
 
     display.setCursor(0, (0 + 10) * 20);
     display.print(" ");

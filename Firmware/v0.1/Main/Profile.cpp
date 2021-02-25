@@ -45,7 +45,7 @@ static profile_t profile1 =
 
 static profile_t profile2 =
 {
-    "Sn96.5/Ag3.0/Cu0.5",
+    "Sn96.5/Ag3/Cu0.5",
 
     // Time
     {

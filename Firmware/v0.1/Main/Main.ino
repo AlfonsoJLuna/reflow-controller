@@ -1,8 +1,8 @@
-#include "Configuration.h"
 #include "Display.h"
 #include "Input.h"
 #include "State.h"
 #include "Temperature.h"
+#include "Output.h"
 #include "Task_Boot.h"
 #include "Task_Menu.h"
 #include "Task_Cooldown.h"
@@ -11,18 +11,12 @@
 #include "Task_Done.h"
 
 
-// Buzzer and relay outputs
-// pinMode(BUZZ, OUTPUT);
-// pinMode(OUT1, OUTPUT);
-// pinMode(OUT2, OUTPUT);
-
-
 void setup()
 {
-    // Wait for stabilization
-    delay(500);
+    delay(500); // Wait for stabilization
 
     Input_Init();
+    Output_Init();
     Display_Init();
     Temperature_Init();
 
