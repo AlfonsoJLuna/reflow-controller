@@ -49,7 +49,7 @@ void Task_Cooldown()
 
             int16_t temp = Temperature_Read_Oven();
 
-            Display_Temperature(temp, 5, COLOR_RED);
+            Display_Value(temp, 'c', 120, 5, COLOR_RED);
 
             if (temp <= 50)
             {

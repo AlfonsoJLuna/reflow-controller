@@ -1,4 +1,5 @@
 #include "Task_Reflow.h"
+#include "Configuration.h"
 #include "Display.h"
 #include "Input.h"
 #include "State.h"
@@ -22,12 +23,12 @@ void Task_Reflow()
     Display_Text_Center_Small("REFLOWING...", 1);
     Display_Option_C("CANCEL");
 
-    Display_Axis();
+    Display_Graph_Axis();
 
     // Display profile curve
     for (int time = 0; time <= 400; time++)
     {
-        Display_Point_Profile(time, Profile_Get_Temp(time));
+        Display_Graph_Point(time, Profile_Get_Temp(time), COLOR_BROWN);
     }
 
     while (quit == 0)
@@ -52,11 +53,21 @@ void Task_Reflow()
         {
             last_millis_temp = current_millis;
 
-            int16_t temp = Temperature_Read_Oven();
+            uint16_t time = (current_millis - reflow_started_millis) / 1000;
 
-            Display_Temperature(temp, 3, COLOR_RED);
+            int16_t temp_ambient = Temperature_Read_Ambient();
+            int16_t temp_oven = Temperature_Read_Oven();
 
-            Display_Point_Real((current_millis - reflow_started_millis) / 1000, temp);
+            Display_Value(100, '%', 203, 3, COLOR_YELLOW);
+            Display_Graph_Point(time, 100, COLOR_YELLOW);
+
+            #ifdef USE_MAX31855
+                Display_Value(temp_ambient, 'c', 36, 3, COLOR_BLUE);
+                Display_Graph_Point(time, temp_ambient, COLOR_BLUE);
+            #endif
+
+            Display_Value(temp_oven, 'c', 120, 3, COLOR_RED);
+            Display_Graph_Point(time, temp_oven, COLOR_RED);
         }
 
         if (current_millis >= (reflow_started_millis + 400000))

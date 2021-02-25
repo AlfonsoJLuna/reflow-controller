@@ -77,7 +77,7 @@ void Display_Text_Left_Menu(char* text, uint8_t row)
 void Display_Arrow_Menu(uint8_t row)
 {
     display.setTextSize(2);
-    display.setTextColor(COLOR_RED, COLOR_BLACK);
+    display.setTextColor(COLOR_YELLOW, COLOR_BLACK);
 
     display.setCursor(0, (0 + 10) * 20);
     display.print(" ");
@@ -95,32 +95,34 @@ void Display_Arrow_Menu(uint8_t row)
     display.print(">");
 }
 
-void Display_Temperature(int16_t number, uint8_t row, uint16_t color)
+void Display_Value(int16_t number, char unit, uint8_t column, uint8_t row, uint16_t color)
 {
-    uint8_t number_width;
+    number = constrain(number, 0, 999);
 
-    if (number <= -100)
+    uint8_t text_width;
+
+    if (number >= 100)
     {
-        number_width = 4;
+        text_width = 4;
     }
-    else if ((number >= 100) || (number <= -10))
+    else if (number >= 10)
     {
-        number_width = 3;
-    }
-    else if ((number >= 10) || (number <= -1))
-    {
-        number_width = 2;
+        text_width = 3;
+        display.fillRect(column - 36, row * 20, 9, 21, COLOR_BLACK);
+        display.fillRect(column + 36 - 9, row * 20, 9, 21, COLOR_BLACK);
     }
     else
     {
-        number_width = 1;
+        text_width = 2;
+        display.fillRect(column - 36, row * 20, 18, 21, COLOR_BLACK);
+        display.fillRect(column + 36 - 18, row * 20, 18, 21, COLOR_BLACK);
     }
 
     display.setTextSize(3);
     display.setTextColor(color, COLOR_BLACK);
-    display.setCursor(120 - ((number_width + 1) * 18) / 2, row * 20);
+    display.setCursor(column - (text_width * 18) / 2, row * 20);
     display.print(number);
-    display.print("c");
+    display.print(unit);
 }
 
 void Display_Option_A(char* text)
@@ -141,7 +143,7 @@ void Display_Option_C(char* text)
     Display_Text_Right(text, 15);
 }
 
-void Display_Axis()
+void Display_Graph_Axis()
 {
     display.drawLine( 20, 110, 230, 110, COLOR_GREY_DARK);
     display.drawLine( 20, 140, 230, 140, COLOR_GREY_DARK);
@@ -186,18 +188,20 @@ void Display_Axis()
     display.print("400");
 }
 
-void Display_Point_Profile(uint16_t time, int16_t temp)
+void Display_Graph_Point(uint16_t time, int16_t temp, uint16_t color)
 {
     uint16_t x = constrain(map(time, 0, 400, 20, 230), 20, 230);
     uint16_t y = constrain(map(temp, 0, 250, 260, 110), 110, 260);
+    uint16_t w;
 
-    display.drawPixel(x, y, COLOR_BLUE);
-}
+    if (time < 400)
+    {
+        w = 2;
+    }
+    else if (time == 400)
+    {
+        w = 1;
+    }
 
-void Display_Point_Real(uint16_t time, int16_t temp)
-{
-    uint16_t x = constrain(map(time, 0, 400, 20, 230), 20, 230);
-    uint16_t y = constrain(map(temp, 0, 250, 260, 110), 110, 260);
-
-    display.drawPixel(x, y, COLOR_RED);
+    display.fillRect(x, y, w, 2, color);
 }

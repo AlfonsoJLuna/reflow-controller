@@ -15,6 +15,9 @@ void Task_Warmup()
     uint64_t last_millis_process = 0;
     uint64_t last_millis_temp = 0;
 
+    Output_1_Set(80);
+    Output_2_Set(80);
+
     Display_Clear();
 
     Display_Text_Center_Small("TEMP < 50c", 1);
@@ -46,7 +49,7 @@ void Task_Warmup()
 
             int16_t temp = Temperature_Read_Oven();
 
-            Display_Temperature(temp, 5, COLOR_RED);
+            Display_Value(temp, 'c', 120, 5, COLOR_RED);
 
             if (temp >= 50)
             {

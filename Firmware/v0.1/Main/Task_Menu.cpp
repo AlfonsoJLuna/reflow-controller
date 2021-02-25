@@ -100,10 +100,10 @@ void Task_Menu()
             last_millis_temp = current_millis;
 
             #ifdef USE_MAX31855
-                Display_Temperature(Temperature_Read_Ambient(), 2, COLOR_BLUE);
+                Display_Value(Temperature_Read_Ambient(), 'c', 120, 2, COLOR_BLUE);
             #endif
 
-            Display_Temperature(Temperature_Read_Oven(), 5, COLOR_RED);
+            Display_Value(Temperature_Read_Oven(), 'c', 120, 5, COLOR_RED);
         }
     }
 }

@@ -19,7 +19,7 @@ void Task_Done()
     Output_2_Set(0);
     
     Display_Text_Center_Small("    DONE!   ", 1);
-    Display_Option_C("RETURN");
+    Display_Option_C("BACK");
 
     while (quit == 0)
     {
@@ -43,9 +43,16 @@ void Task_Done()
         {
             last_millis_temp = current_millis;
 
-            int16_t temp = Temperature_Read_Oven();
+            int16_t temp_ambient = Temperature_Read_Ambient();
+            int16_t temp_oven = Temperature_Read_Oven();
 
-            Display_Temperature(temp, 3, COLOR_RED);
+            #ifdef USE_MAX31855
+                Display_Value(temp_ambient, 'c', 36, 3, COLOR_BLUE);
+            #endif
+
+            Display_Value(temp_oven, 'c', 120, 3, COLOR_RED);
+
+            Display_Value(0, '%', 203, 3, COLOR_YELLOW);
         }
     }
 }
