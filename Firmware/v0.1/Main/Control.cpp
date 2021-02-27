@@ -42,13 +42,13 @@ uint8_t Control_PID_Run(uint16_t TargetTemp, uint16_t ActualTemp)
 
     LastError = Error;
 
-    if ((U >= 0) || (U <= 100))
+    if ((U < 0) || (U > 100))
     {
-        IsOutputSaturated = false;
+        IsOutputSaturated = true;
     }
     else
     {
-        IsOutputSaturated = true;
+        IsOutputSaturated = false;
     }
 
     uint8_t Output = constrain(round(U), 0, 100);
