@@ -34,6 +34,6 @@ Feel free to build one yourself! The components have been carefully chosen to be
 
 ### To do
 
-* PID controlled outputs with configurable parameters.
 * Buzzer should beep when the door needs to be open.
+* Tune PID parameters.
 * Proper temperature/time values for the profiles.
