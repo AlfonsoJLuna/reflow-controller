@@ -76,7 +76,7 @@ void Task_Menu()
             {
                 Profile_Set(menu_option);
 
-                int16_t temp = Temperature_Read_Oven();
+                uint16_t temp = Temperature_Read_Oven();
 
                 if (temp > 55)
                 {

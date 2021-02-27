@@ -25,18 +25,18 @@ void Temperature_Init()
     #endif
 }
 
-int16_t Temperature_Read_Ambient()
+uint16_t Temperature_Read_Ambient()
 {
     #ifdef USE_MAX31855
         double temp_ambient = thermocouple.readInternal();
 
         if (isnan(temp_ambient))
         {
+            temp_ambient = 999;
             Display_Text_Center_Small("THERMOCOUPLE ERR", 0);
-            return 999;
         }
 
-        return round(temp_ambient);
+        return constrain(round(temp_ambient), 0, 999);
     #endif
 
     #ifdef USE_MAX6675
@@ -44,15 +44,15 @@ int16_t Temperature_Read_Ambient()
     #endif
 }
 
-int16_t Temperature_Read_Oven()
+uint16_t Temperature_Read_Oven()
 {
     double temp_oven = thermocouple.readCelsius();
 
     if (isnan(temp_oven))
     {
+        temp_oven = 999;
         Display_Text_Center_Small("THERMOCOUPLE ERR", 0);
-        return 999;
     }
 
-    return round(temp_oven + TEMP_OFFSET);
+    return constrain(round(temp_oven + TEMP_OFFSET), 0, 999);
 }

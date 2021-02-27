@@ -1,5 +1,6 @@
 #include "Task_Reflow.h"
 #include "Configuration.h"
+#include "Control.h"
 #include "Display.h"
 #include "Input.h"
 #include "State.h"
@@ -31,6 +32,8 @@ void Task_Reflow()
         Display_Graph_Point(time, Profile_Get_Temp(time), COLOR_BROWN);
     }
 
+    Control_PID_Reset();
+
     while (quit == 0)
     {
         current_millis = millis();
@@ -55,13 +58,18 @@ void Task_Reflow()
 
             uint16_t time = (current_millis - reflow_started_millis) / 1000;
 
-            int16_t temp_ambient = Temperature_Read_Ambient();
-            int16_t temp_oven = Temperature_Read_Oven();
+            uint16_t temp_oven = Temperature_Read_Oven();
 
-            Display_Value(100, '%', 203, 3, COLOR_YELLOW);
-            Display_Graph_Point(time, 100, COLOR_YELLOW);
+            uint8_t pid_output = Control_PID_Run(Profile_Get_Temp(time), temp_oven);
+
+            Output_1_Set(pid_output);
+            Output_2_Set(pid_output);
+
+            Display_Value(pid_output, '%', 203, 3, COLOR_YELLOW);
+            Display_Graph_Point(time, pid_output, COLOR_YELLOW);
 
             #ifdef USE_MAX31855
+                uint16_t temp_ambient = Temperature_Read_Ambient();
                 Display_Value(temp_ambient, 'c', 36, 3, COLOR_BLUE);
                 Display_Graph_Point(time, temp_ambient, COLOR_BLUE);
             #endif

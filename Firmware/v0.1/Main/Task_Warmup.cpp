@@ -15,8 +15,8 @@ void Task_Warmup()
     uint64_t last_millis_process = 0;
     uint64_t last_millis_temp = 0;
 
-    Output_1_Set(80);
-    Output_2_Set(80);
+    Output_1_Set(40);
+    Output_2_Set(40);
 
     Display_Clear();
 
@@ -47,7 +47,7 @@ void Task_Warmup()
         {
             last_millis_temp = current_millis;
 
-            int16_t temp = Temperature_Read_Oven();
+            uint16_t temp = Temperature_Read_Oven();
 
             Display_Value(temp, 'c', 120, 5, COLOR_RED);
 

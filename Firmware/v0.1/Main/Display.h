@@ -25,14 +25,14 @@ void Display_Text_Left_Menu(char* text, uint8_t row);
 
 void Display_Arrow_Menu(uint8_t row);
 
-void Display_Value(int16_t number, char unit, uint8_t column, uint8_t row, uint16_t color);
+void Display_Value(uint16_t number, char unit, uint8_t column, uint8_t row, uint16_t color);
 
 void Display_Option_A(char* text);
 void Display_Option_B(char* text);
 void Display_Option_C(char* text);
 
 void Display_Graph_Axis();
-void Display_Graph_Point(uint16_t time, int16_t temp, uint16_t color);
+void Display_Graph_Point(uint16_t time, uint16_t temp, uint16_t color);
 
 
 #endif

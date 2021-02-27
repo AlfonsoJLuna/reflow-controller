@@ -47,7 +47,7 @@ void Task_Cooldown()
         {
             last_millis_temp = current_millis;
 
-            int16_t temp = Temperature_Read_Oven();
+            uint16_t temp = Temperature_Read_Oven();
 
             Display_Value(temp, 'c', 120, 5, COLOR_RED);
 

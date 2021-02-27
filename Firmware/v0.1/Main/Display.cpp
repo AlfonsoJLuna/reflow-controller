@@ -95,7 +95,7 @@ void Display_Arrow_Menu(uint8_t row)
     display.print(">");
 }
 
-void Display_Value(int16_t number, char unit, uint8_t column, uint8_t row, uint16_t color)
+void Display_Value(uint16_t number, char unit, uint8_t column, uint8_t row, uint16_t color)
 {
     number = constrain(number, 0, 999);
 
@@ -188,7 +188,7 @@ void Display_Graph_Axis()
     display.print("400");
 }
 
-void Display_Graph_Point(uint16_t time, int16_t temp, uint16_t color)
+void Display_Graph_Point(uint16_t time, uint16_t temp, uint16_t color)
 {
     uint16_t x = constrain(map(time, 0, 400, 20, 230), 20, 230);
     uint16_t y = constrain(map(temp, 0, 250, 260, 110), 110, 260);

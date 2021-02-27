@@ -5,10 +5,10 @@
 #include <stdint.h>
 
 
-void    Temperature_Init();
+void     Temperature_Init();
 
-int16_t Temperature_Read_Ambient();
-int16_t Temperature_Read_Oven();
+uint16_t Temperature_Read_Ambient();
+uint16_t Temperature_Read_Oven();
 
 
 #endif
