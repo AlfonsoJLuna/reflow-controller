@@ -1,3 +1,4 @@
+#include "Buzzer.h"
 #include "Display.h"
 #include "Input.h"
 #include "State.h"
@@ -17,6 +18,7 @@ void setup()
 
     Input_Init();
     Output_Init();
+    Buzzer_Init();
     Display_Init();
     Temperature_Init();
 

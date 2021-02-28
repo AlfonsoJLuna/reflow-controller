@@ -1,4 +1,5 @@
 #include "Task_Done.h"
+#include "Buzzer.h"
 #include "Display.h"
 #include "Input.h"
 #include "State.h"
@@ -17,10 +18,11 @@ void Task_Done()
 
     Output_1_Set(0);
     Output_2_Set(0);
+    Buzzer_Silent();
     
     Display_Text_Center_Small("    DONE!   ", 1);
     Display_Value(0, '%', 203, 3, COLOR_YELLOW);
-    Display_Option_C("BACK");
+    Display_Option_C("RETURN");
 
     while (quit == 0)
     {
@@ -32,6 +34,7 @@ void Task_Done()
 
             Input_Process();
             Output_Process();
+            Buzzer_Process();
 
             if (Input_Read_C() == 1)
             {

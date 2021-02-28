@@ -1,4 +1,5 @@
 #include "Task_Warmup.h"
+#include "Buzzer.h"
 #include "Display.h"
 #include "Input.h"
 #include "State.h"
@@ -17,6 +18,7 @@ void Task_Warmup()
 
     Output_1_Set(40);
     Output_2_Set(40);
+    Buzzer_Silent();
 
     Display_Clear();
 
@@ -35,6 +37,7 @@ void Task_Warmup()
 
             Input_Process();
             Output_Process();
+            Buzzer_Process();
 
             if (Input_Read_C() == 1)
             {

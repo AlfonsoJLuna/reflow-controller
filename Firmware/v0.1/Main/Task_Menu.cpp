@@ -1,4 +1,5 @@
 #include "Task_Menu.h"
+#include "Buzzer.h"
 #include "Configuration.h"
 #include "Display.h"
 #include "Input.h"
@@ -22,6 +23,7 @@ void Task_Menu()
 
     Output_1_Set(0);
     Output_2_Set(0);
+    Buzzer_Silent();
 
     Display_Clear();
 
@@ -53,6 +55,7 @@ void Task_Menu()
 
             Input_Process();
             Output_Process();
+            Buzzer_Process();
 
             if (Input_Read_A() == 1)
             {

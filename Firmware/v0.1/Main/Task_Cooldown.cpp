@@ -1,4 +1,5 @@
 #include "Task_Cooldown.h"
+#include "Buzzer.h"
 #include "Display.h"
 #include "Input.h"
 #include "State.h"
@@ -17,6 +18,7 @@ void Task_Cooldown()
 
     Output_1_Set(0);
     Output_2_Set(0);
+    Buzzer_Silent();
     
     Display_Clear();
 
@@ -35,6 +37,7 @@ void Task_Cooldown()
 
             Input_Process();
             Output_Process();
+            Buzzer_Process();
 
             if (Input_Read_C() == 1)
             {

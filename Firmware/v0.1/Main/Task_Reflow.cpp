@@ -1,4 +1,5 @@
 #include "Task_Reflow.h"
+#include "Buzzer.h"
 #include "Configuration.h"
 #include "Control.h"
 #include "Display.h"
@@ -44,6 +45,7 @@ void Task_Reflow()
 
             Input_Process();
             Output_Process();
+            Buzzer_Process();
 
             if (Input_Read_C() == 1)
             {
@@ -58,12 +60,23 @@ void Task_Reflow()
 
             uint16_t time = (current_millis - reflow_started_millis) / 1000;
 
+            uint16_t temp_target = Profile_Get_Temp(time);
             uint16_t temp_oven = Temperature_Read_Oven();
 
-            uint8_t pid_output = Control_PID_Run(Profile_Get_Temp(time), temp_oven);
+            uint8_t pid_output = Control_PID_Run(temp_target, temp_oven);
 
             Output_1_Set(pid_output);
             Output_2_Set(pid_output);
+
+            if ((pid_output == 0) && (time > 100) && (temp_oven > (temp_target + 10)))
+            {
+                Display_Text_Center_Small(" OPEN DOOR! ", 1);
+                Buzzer_Beep();
+            }
+            else
+            {
+                Buzzer_Silent();
+            }
 
             Display_Value(pid_output, '%', 203, 3, COLOR_YELLOW);
             Display_Graph_Point(time, pid_output, COLOR_YELLOW);
