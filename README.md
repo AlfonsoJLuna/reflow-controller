@@ -6,17 +6,32 @@ Open-source controller for home-made reflow ovens.
 :---: | :---:
 Front | Back
 
-## About the hardware
+## Features
 
-Feel free to build one yourself! The components have been carefully chosen to be easy to source and assemble by hand.
+* MCU: STM32F411CEU6 (WeAct MiniF4 "Black Pill" module).
+* Sensors: K-Type thermocouple to digital converter. Compatible with both MAX31855 and MAX6675. MAX31855 is recommended.
+* Display: 2" 240×320 IPS ST7789 (Waveshare 17344 module).
+* Inputs: 3x Push buttons to navigate the menu.
+* Outputs: 2x 5V 2A outputs capable of driving solid state relays as well as inductive loads (mechanical relays, fans).
+* Buzzer: Alarm buzzer.
+* Power: 5V provided via USB-C or screw terminals.
+
+## Where to get
+
+Feel free to build one yourself! The components are easy to source and assemble by hand.
 
 * [Gerbers](https://github.com/AlfonsoJLuna/reflow-oven/tree/master/Hardware/v0.1/Gerbers)
 * [Schematics](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/reflow-oven.pdf)
 * [Interactive BOM](http://htmlpreview.github.io/?https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/ibom.html)
 
-## About the firmware
+## How to use
 
-### How to build/flash
+### Configuration
+
+* Edit configurable parameters in `Configuration.h` if needed.
+* Edit the profiles in `Profile.cpp` if needed. You can also add extra profiles.
+
+### How to build and flash
 
 1. Install STM32CubeProgrammer and the Arduino IDE.
 2. From the Boards Manager, install `STM32 Cores 1.9.0` or later, following [this tutorial](https://github.com/stm32duino/wiki/wiki/Getting-Started).
@@ -32,8 +47,7 @@ Feel free to build one yourself! The components have been carefully chosen to be
 8. Reset the board in DFU mode: hold BOOT0, hold NRST, release NRST, release BOOT0. `STM32 BOOTLOADER` should appear in Windows Device Manager.
 9. Press the `Upload` button in the Arduino IDE.
 
-### To do
+## To do
 
-* Buzzer should beep when the door needs to be open.
 * Tune PID parameters.
-* Proper temperature/time values for the profiles.
+* Tune profile temperature/time values.
