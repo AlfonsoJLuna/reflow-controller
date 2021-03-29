@@ -50,4 +50,3 @@ Feel free to build one yourself! The components are easy to source and assemble 
 ## To do
 
 * Tune PID parameters.
-* Tune profile temperature/time values.

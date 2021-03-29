@@ -28,7 +28,7 @@ void Task_Reflow()
     Display_Graph_Axis();
 
     // Display profile curve
-    for (int time = 0; time <= 400; time++)
+    for (int time = 0; time <= 500; time++)
     {
         Display_Graph_Point(time, Profile_Get_Temp(time), COLOR_BROWN);
     }
@@ -63,19 +63,32 @@ void Task_Reflow()
             uint16_t temp_target = Profile_Get_Temp(time);
             uint16_t temp_oven = Temperature_Read_Oven();
 
-            uint8_t pid_output = Control_PID_Run(temp_target, temp_oven);
+            uint8_t pid_output;
 
-            Output_1_Set(pid_output);
-            Output_2_Set(pid_output);
-
-            if ((pid_output == 0) && (time > 100) && (temp_oven > (temp_target + 10)))
+            if (time < Profile_Get_Time_Cooldown())
             {
-                Display_Text_Center_Small(" OPEN DOOR! ", 1);
-                Buzzer_Beep();
+                pid_output = Control_PID_Run(temp_target, temp_oven);
+
+                Output_1_Set(pid_output);
+                Output_2_Set(pid_output);
             }
             else
             {
-                Buzzer_Silent();
+                pid_output = 0;
+                
+                Output_1_Set(0);
+                Output_2_Set(0);
+
+                Display_Text_Center_Small(" OPEN DOOR! ", 1);
+
+                if (temp_oven > temp_target)
+                {
+                    Buzzer_Beep();
+                }
+                else
+                {
+                    Buzzer_Silent();
+                }
             }
 
             Display_Value(pid_output, '%', 203, 3, COLOR_YELLOW);
@@ -91,7 +104,7 @@ void Task_Reflow()
             Display_Graph_Point(time, temp_oven, COLOR_RED);
         }
 
-        if (current_millis >= (reflow_started_millis + 400000))
+        if (current_millis >= (reflow_started_millis + 500000))
         {
             State_Set(DONE);
             quit = 1;

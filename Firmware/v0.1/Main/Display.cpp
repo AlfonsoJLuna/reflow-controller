@@ -176,29 +176,29 @@ void Display_Graph_Axis()
 
     display.setCursor(20 - 3, 266);
     display.print("0");
-    display.setCursor(62 - 6, 266);
-    display.print("80");
+    display.setCursor(62 - 9, 266);
+    display.print("100");
     display.setCursor(104 - 9, 266);
-    display.print("160");
+    display.print("200");
     display.setCursor(146 - 9, 266);
-    display.print("240");
+    display.print("300");
     display.setCursor(188 - 9, 266);
-    display.print("320");
-    display.setCursor(230 - 9, 266);
     display.print("400");
+    display.setCursor(230 - 9, 266);
+    display.print("500");
 }
 
 void Display_Graph_Point(uint16_t time, uint16_t temp, uint16_t color)
 {
-    uint16_t x = constrain(map(time, 0, 400, 20, 230), 20, 230);
+    uint16_t x = constrain(map(time, 0, 500, 20, 230), 20, 230);
     uint16_t y = constrain(map(temp, 0, 250, 260, 110), 110, 260);
     uint16_t w;
 
-    if (time < 400)
+    if (time < 500)
     {
         w = 2;
     }
-    else if (time == 400)
+    else if (time == 500)
     {
         w = 1;
     }

@@ -2,7 +2,8 @@
 #include <Arduino.h>
 
 
-// All profiles should start with time = 0, temp = 50 and end with time = 400, temp = 50
+// All profiles should start with time = 0, temp = 50 and end with time = 500, temp = 50
+// See Docs/Reflow Profiles.xlsx for more information
 
 
 typedef struct
@@ -10,6 +11,7 @@ typedef struct
     char name[19];
     uint16_t time[10];
     uint16_t temp[10];
+    uint16_t time_cooldown;
 } profile_t;
 
 
@@ -19,13 +21,16 @@ static profile_t profile0 =
 
     // Time
     {
-        0, 100, 180, 240, 260, 400, 400, 400, 400, 400
+        0, 130, 220, 320, 340, 500, 500, 500, 500, 500
     },
 
     // Temperature
     {
-        50, 150, 150, 250, 250, 50, 50, 50, 50, 50
-    }
+        50, 150, 175, 250, 250, 50, 50, 50, 50, 50
+    },
+
+    // Cooldown start time
+    340
 };
 
 static profile_t profile1 =
@@ -34,13 +39,16 @@ static profile_t profile1 =
 
     // Time
     {
-        0, 100, 180, 240, 260, 400, 400, 400, 400, 400
+        0, 60, 150, 260, 280, 420, 500, 500, 500, 500
     },
 
     // Temperature
     {
-        50, 140, 140, 220, 220, 50, 50, 50, 50, 50
-    }
+        50, 100, 150, 235, 235, 50, 50, 50, 50, 50
+    },
+
+    // Cooldown start time
+    280
 };
 
 static profile_t profile2 =
@@ -49,13 +57,16 @@ static profile_t profile2 =
 
     // Time
     {
-        0, 100, 180, 240, 260, 400, 400, 400, 400, 400
+        0, 50, 140, 200, 220, 310, 500, 500, 500, 500
     },
 
     // Temperature
     {
-        50, 130, 130, 165, 165, 50, 50, 50, 50, 50
-    }
+        50, 90, 130, 165, 165, 50, 50, 50, 50, 50
+    },
+
+    // Cooldown start time
+    220
 };
 
 static profile_t* profile_list[] = 
@@ -97,7 +108,7 @@ void Profile_Set(uint8_t profile_no)
 
 uint16_t Profile_Get_Temp(uint16_t time)
 {
-    time = constrain(time, 0, 400);
+    time = constrain(time, 0, 500);
 
     uint8_t index = 1;
 
@@ -114,4 +125,9 @@ uint16_t Profile_Get_Temp(uint16_t time)
     long temp = map(time, time_min, time_max, temp_min, temp_max);
 
     return constrain(temp, 50, 250);
+}
+
+uint16_t Profile_Get_Time_Cooldown()
+{
+    return current_profile->time_cooldown;
 }
