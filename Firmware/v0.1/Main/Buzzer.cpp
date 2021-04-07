@@ -33,7 +33,9 @@ void Buzzer_Process()
     {
         if (current_millis < (period_start_millis + 1000))
         {
-            digitalWrite(BUZZ, output);
+            #if BUZZER_EN
+                digitalWrite(BUZZ, output);
+            #endif
         }
         else
         {
