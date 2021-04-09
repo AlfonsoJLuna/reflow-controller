@@ -1,6 +1,6 @@
-# reflow-oven
+# Reflow Controller
 
-Open-source controller for home-made reflow ovens.
+Open-source reflow controller for ovens and hot plates.
 
 ![](Images/Front.jpg) | ![](Images/Back.jpg)
 :---: | :---:
@@ -20,9 +20,9 @@ Front | Back
 
 Feel free to build one yourself! The components are easy to source and assemble by hand.
 
-* [Gerbers](https://github.com/AlfonsoJLuna/reflow-oven/tree/master/Hardware/v0.1/Gerbers)
-* [Schematics](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/reflow-oven.pdf)
-* [Interactive BOM](http://htmlpreview.github.io/?https://raw.githubusercontent.com/AlfonsoJLuna/reflow-oven/master/Hardware/v0.1/ibom.html)
+* [Gerbers](https://github.com/AlfonsoJLuna/reflow-controller/tree/master/Hardware/v0.1/Gerbers)
+* [Schematics](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-controller/master/Hardware/v0.1/reflow-oven.pdf)
+* [Interactive BOM](http://htmlpreview.github.io/?https://raw.githubusercontent.com/AlfonsoJLuna/reflow-controller/master/Hardware/v0.1/ibom.html)
 
 ## How to use
 
@@ -46,7 +46,3 @@ Feel free to build one yourself! The components are easy to source and assemble 
     * `Adafruit ST7735 and ST7789 Library 1.6.0`
 8. Reset the board in DFU mode: hold BOOT0, hold NRST, release NRST, release BOOT0. `STM32 BOOTLOADER` should appear in Windows Device Manager.
 9. Press the `Upload` button in the Arduino IDE.
-
-## To do
-
-* Tune PID parameters.
