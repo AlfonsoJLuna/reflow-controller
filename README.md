@@ -2,7 +2,7 @@
 
 Open-source reflow controller for ovens and hot plates.
 
-![](Images/Front.jpg) | ![](Images/Back.jpg)
+![](v0.1/Images/Front.jpg) | ![](v0.1/Images/Back.jpg)
 :---: | :---:
 Front | Back
 
@@ -20,9 +20,9 @@ Front | Back
 
 Feel free to build one yourself! The components are easy to source and assemble by hand.
 
-* [Gerbers](https://github.com/AlfonsoJLuna/reflow-controller/tree/master/Hardware/v0.1/Gerbers)
-* [Schematics](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-controller/master/Hardware/v0.1/reflow-oven.pdf)
-* [Interactive BOM](http://htmlpreview.github.io/?https://raw.githubusercontent.com/AlfonsoJLuna/reflow-controller/master/Hardware/v0.1/ibom.html)
+* [Gerbers](https://github.com/AlfonsoJLuna/reflow-controller/tree/master/v0.1/Hardware/Gerbers)
+* [Schematics](https://raw.githubusercontent.com/AlfonsoJLuna/reflow-controller/master/v0.1/Hardware/reflow-oven.pdf)
+* [Interactive BOM](http://htmlpreview.github.io/?https://raw.githubusercontent.com/AlfonsoJLuna/reflow-controller/master/v0.1/Hardware/ibom.html)
 
 ## How to use
 
