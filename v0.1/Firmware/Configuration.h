@@ -32,8 +32,8 @@
 //////////////////////////////////////////////////
 
 
-#define PID_KP 4.50
-#define PID_KI 0.02
+#define PID_KP 4.53
+#define PID_KI 0.03
 #define PID_KD 0.00
 
 

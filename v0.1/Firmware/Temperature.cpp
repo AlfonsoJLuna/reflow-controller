@@ -54,5 +54,7 @@ uint16_t Temperature_Read_Oven()
         Display_Text_Center_Small("THERMOCOUPLE ERR", 0);
     }
 
+    SerialUSB.println(temp_oven);
+
     return constrain(round(temp_oven + TEMP_OFFSET), 0, 999);
 }

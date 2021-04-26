@@ -23,6 +23,8 @@ void setup()
     Temperature_Init();
 
     State_Set(BOOT);
+
+    SerialUSB.begin(9600);
 }
 
 void loop()
