@@ -435,7 +435,7 @@ Wire Wire Line
 Wire Wire Line
 	8800 1600 8800 1650
 Text Label 8400 1600 0    50   ~ 0
-OUT1
+OUT_SSR
 Wire Wire Line
 	9250 1300 9250 1350
 Wire Wire Line
@@ -460,7 +460,7 @@ Wire Wire Line
 Wire Wire Line
 	10100 950  9250 950 
 Text Label 10100 1350 2    50   ~ 0
-OUT1-
+OUT_SSR-
 $Comp
 L _AKL_Diode:MBR120VLSFT3G D4
 U 1 1 6088D5B4
@@ -512,7 +512,7 @@ Wire Wire Line
 Wire Wire Line
 	9250 3450 9250 3650
 Text Label 8400 3250 0    50   ~ 0
-OUT2
+OUT_FAN
 Wire Wire Line
 	9250 2950 9250 3000
 Wire Wire Line
@@ -537,7 +537,7 @@ Wire Wire Line
 Wire Wire Line
 	10100 2600 9250 2600
 Text Label 10100 3000 2    50   ~ 0
-OUT2-
+OUT_FAN-
 $Comp
 L power:GND #PWR01
 U 1 1 608AAC31
@@ -1160,10 +1160,6 @@ Text Label 6800 4900 0    50   ~ 0
 SPI_SCK
 Text Label 6800 4800 0    50   ~ 0
 SPI_CS
-Text Label 6800 5600 0    50   ~ 0
-OUT2
-Text Label 6800 5500 0    50   ~ 0
-OUT1
 Text Label 6800 4400 0    50   ~ 0
 BTN_DOWN
 Text Label 6800 4500 0    50   ~ 0
@@ -1354,50 +1350,38 @@ Wire Wire Line
 $Comp
 L _AKL_Connector:WJ124-3.81-2P J5
 U 1 1 607B7FA5
-P 10350 1100
-F 0 "J5" H 10350 1200 50  0000 C CNN
-F 1 "S1" H 10350 900 50  0000 C CNN
-F 2 "_AKL_Connector:WJ124-3.81-2P" H 10350 1100 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 10350 1100 50  0001 C CNN
-F 4 "WJ124-3.81-2P" H 10350 1100 50  0001 C CNN "MPN"
-	1    10350 1100
-	1    0    0    -1  
-$EndComp
-$Comp
-L _AKL_Connector:WJ124-3.81-2P J6
-U 1 1 6098662B
-P 10350 2750
-F 0 "J6" H 10350 2850 50  0000 C CNN
-F 1 "S2" H 10350 2550 50  0000 C CNN
-F 2 "_AKL_Connector:WJ124-3.81-2P" H 10350 2750 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 10350 2750 50  0001 C CNN
-F 4 "WJ124-3.81-2P" H 10350 2750 50  0001 C CNN "MPN"
-	1    10350 2750
-	1    0    0    -1  
+P 10350 1200
+F 0 "J5" H 10350 1000 50  0000 C CNN
+F 1 "S1" H 10350 1300 50  0000 C CNN
+F 2 "_AKL_Connector:WJ124-3.81-2P" H 10350 1200 50  0001 C CNN
+F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 10350 1200 50  0001 C CNN
+F 4 "WJ124-3.81-2P" H 10350 1200 50  0001 C CNN "MPN"
+	1    10350 1200
+	1    0    0    1   
 $EndComp
 $Comp
 L _AKL_Connector:WJ124-3.81-2P J1
 U 1 1 6098E68C
-P 1200 1350
-F 0 "J1" H 1200 1450 50  0000 C CNN
-F 1 "5V" H 1200 1150 50  0000 C CNN
-F 2 "_AKL_Connector:WJ124-3.81-2P" H 1200 1350 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 1200 1350 50  0001 C CNN
-F 4 "WJ124-3.81-2P" H 1200 1350 50  0001 C CNN "MPN"
-	1    1200 1350
-	-1   0    0    -1  
+P 1200 1450
+F 0 "J1" H 1200 1250 50  0000 C CNN
+F 1 "5V" H 1200 1550 50  0000 C CNN
+F 2 "_AKL_Connector:WJ124-3.81-2P" H 1200 1450 50  0001 C CNN
+F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 1200 1450 50  0001 C CNN
+F 4 "WJ124-3.81-2P" H 1200 1450 50  0001 C CNN "MPN"
+	1    1200 1450
+	-1   0    0    1   
 $EndComp
 $Comp
 L _AKL_Connector:WJ124-3.81-2P J4
 U 1 1 60990BC2
-P 4550 2650
-F 0 "J4" H 4550 2750 50  0000 C CNN
-F 1 "TC" H 4550 2450 50  0000 C CNN
-F 2 "_AKL_Connector:WJ124-3.81-2P" H 4550 2650 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 4550 2650 50  0001 C CNN
-F 4 "WJ124-3.81-2P" H 4550 2650 50  0001 C CNN "MPN"
-	1    4550 2650
-	-1   0    0    -1  
+P 4550 2750
+F 0 "J4" H 4550 2550 50  0000 C CNN
+F 1 "TC" H 4550 2850 50  0000 C CNN
+F 2 "_AKL_Connector:WJ124-3.81-2P" H 4550 2750 50  0001 C CNN
+F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 4550 2750 50  0001 C CNN
+F 4 "WJ124-3.81-2P" H 4550 2750 50  0001 C CNN "MPN"
+	1    4550 2750
+	-1   0    0    1   
 $EndComp
 Text Notes 10250 2600 0    50   ~ 0
 5V 300mA
@@ -1551,4 +1535,20 @@ F 3 "~" H 10550 6900 50  0001 C CNN
 $EndComp
 Text Label 10550 6900 3    50   ~ 0
 3V3
+$Comp
+L _AKL_Connector:WJ124-3.81-2P J6
+U 1 1 6098662B
+P 10350 2850
+F 0 "J6" H 10350 2650 50  0000 C CNN
+F 1 "S2" H 10350 2950 50  0000 C CNN
+F 2 "_AKL_Connector:WJ124-3.81-2P" H 10350 2850 50  0001 C CNN
+F 3 "https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ124-3-81-2P_C69811.html" H 10350 2850 50  0001 C CNN
+F 4 "WJ124-3.81-2P" H 10350 2850 50  0001 C CNN "MPN"
+	1    10350 2850
+	1    0    0    1   
+$EndComp
+Text Label 6800 5500 0    50   ~ 0
+OUT_SSR
+Text Label 6800 5600 0    50   ~ 0
+OUT_FAN
 $EndSCHEMATC
