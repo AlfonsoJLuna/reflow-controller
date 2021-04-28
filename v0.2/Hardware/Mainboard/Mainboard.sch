@@ -26,16 +26,16 @@ F 4 "MBR120VLSFT3G" H 1900 1050 50  0001 C CNN "MPN"
 	-1   0    0    1   
 $EndComp
 $Comp
-L _AKL_Switch:TS-1095-A13B3-D1 SW1
+L _AKL_Switch:TS-1095-A135B2-D1 SW1
 U 1 1 607B470C
 P 950 5000
-F 0 "SW1" V 1000 5200 50  0000 C CNN
-F 1 "UP" V 900 5200 50  0000 C CNN
+F 0 "SW1" V 900 5200 50  0000 C CNN
+F 1 "UP" V 1000 5200 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_PUSH_6mm_H9.5mm" H 950 5200 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A13B3-D1_C493018.html" H 950 5200 50  0001 C CNN
-F 4 "TS-1095-A13B3-D1" H 950 5300 50  0001 C CNN "MPN"
+F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A135B2-D1_C782817.html" H 950 5200 50  0001 C CNN
+F 4 "TS-1095-A135B2-D1" H 950 5300 50  0001 C CNN "MPN"
 	1    950  5000
-	0    1    -1   0   
+	0    1    1    0   
 $EndComp
 $Comp
 L _AKL_IC:MAX31855KASA+T U4
@@ -796,7 +796,7 @@ P 9250 4750
 F 0 "R15" H 9320 4796 50  0000 L CNN
 F 1 "100" H 9320 4705 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" H 9250 4750 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Chip-Resistor-Surface-Mount_10R-10R-1_C109318.html" H 9250 4750 50  0001 C CNN
+F 3 "https://lcsc.com/product-detail/Chip-Resistor-Surface-Mount_100R-1000-1_C105588.html" H 9250 4750 50  0001 C CNN
 F 4 "RC0603FR-0710RL" H 9250 4750 44  0001 C CNN "MPN"
 	1    9250 4750
 	1    0    0    -1  
@@ -1232,40 +1232,40 @@ NoConn ~ 5000 4600
 Text Notes 3850 2200 0    79   Italic 16
 Thermocouple Interface
 $Comp
-L _AKL_Switch:TS-1095-A13B3-D1 SW2
+L _AKL_Switch:TS-1095-A135B2-D1 SW2
 U 1 1 608C10B0
 P 1600 5000
 F 0 "SW2" V 1650 5200 50  0000 C CNN
 F 1 "DOWN" V 1550 5200 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_PUSH_6mm_H9.5mm" H 1600 5200 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A13B3-D1_C493018.html" H 1600 5200 50  0001 C CNN
-F 4 "TS-1095-A13B3-D1" H 1600 5300 50  0001 C CNN "MPN"
+F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A135B2-D1_C782817.html" H 1600 5200 50  0001 C CNN
+F 4 "TS-1095-A135B2-D1" H 1600 5300 50  0001 C CNN "MPN"
 	1    1600 5000
 	0    1    -1   0   
 $EndComp
 $Comp
-L _AKL_Switch:TS-1095-A13B3-D1 SW3
+L _AKL_Switch:TS-1095-A135B2-D1 SW3
 U 1 1 608C151B
 P 2250 5000
 F 0 "SW3" V 2300 5200 50  0000 C CNN
 F 1 "OK" V 2200 5200 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_PUSH_6mm_H9.5mm" H 2250 5200 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A13B3-D1_C493018.html" H 2250 5200 50  0001 C CNN
-F 4 "TS-1095-A13B3-D1" H 2250 5300 50  0001 C CNN "MPN"
+F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A135B2-D1_C782817.html" H 2250 5200 50  0001 C CNN
+F 4 "TS-1095-A135B2-D1" H 2250 5300 50  0001 C CNN "MPN"
 	1    2250 5000
 	0    1    -1   0   
 $EndComp
 $Comp
-L _AKL_Switch:TS-1095-A13B3-D1 SW4
+L _AKL_Switch:TS-1095-A135B2-D1 SW4
 U 1 1 608C1922
 P 2900 5000
-F 0 "SW4" V 2950 5200 50  0000 C CNN
-F 1 "BACK" V 2850 5200 50  0000 C CNN
+F 0 "SW4" V 2850 5200 50  0000 C CNN
+F 1 "BACK" V 2950 5200 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_PUSH_6mm_H9.5mm" H 2900 5200 50  0001 C CNN
-F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A13B3-D1_C493018.html" H 2900 5200 50  0001 C CNN
-F 4 "TS-1095-A13B3-D1" H 2900 5300 50  0001 C CNN "MPN"
+F 3 "https://lcsc.com/product-detail/Tactile-Switches_Yuandi-TS-1095-A135B2-D1_C782817.html" H 2900 5200 50  0001 C CNN
+F 4 "TS-1095-A135B2-D1" H 2900 5300 50  0001 C CNN "MPN"
 	1    2900 5000
-	0    1    -1   0   
+	0    1    1    0   
 $EndComp
 $Comp
 L _AKL_Resistor_603:5K1 R8
