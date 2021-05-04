@@ -5,7 +5,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Reflow Controller"
-Date "2021-04-17"
+Date "2021-05-04"
 Rev "v0.2"
 Comp "LUNAEmbedded.com"
 Comment1 ""
@@ -1152,17 +1152,15 @@ Text Label 5000 5300 2    50   ~ 0
 I2C_SDA
 Text Label 5000 5200 2    50   ~ 0
 I2C_SCL
-Text Label 6800 5200 0    50   ~ 0
-PWM_BUZZER
 Text Label 6800 5000 0    50   ~ 0
 SPI_MISO
 Text Label 6800 4900 0    50   ~ 0
 SPI_SCK
 Text Label 6800 4800 0    50   ~ 0
 SPI_CS
-Text Label 6800 4400 0    50   ~ 0
+Text Label 6800 5900 0    50   ~ 0
 BTN_DOWN
-Text Label 6800 4500 0    50   ~ 0
+Text Label 5000 4900 2    50   ~ 0
 BTN_UP
 Text Notes 3100 6750 0    79   Italic 16
 Debug Header
@@ -1211,7 +1209,7 @@ MCU_TXD
 Text Label 6800 5400 0    50   ~ 0
 MCU_RXD
 NoConn ~ 6800 4600
-Text Label 6800 5100 0    50   ~ 0
+Text Label 5000 5500 2    50   ~ 0
 BTN_OK
 Text Label 6800 4700 0    50   ~ 0
 3V3
@@ -1220,12 +1218,12 @@ Text Notes 6950 4600 0    50   ~ 0
 USART2_TX
 Text Notes 6950 4700 0    50   ~ 0
 USART2_RX
-NoConn ~ 6800 5900
-NoConn ~ 5000 5500
+NoConn ~ 6800 4400
+NoConn ~ 6800 5100
 NoConn ~ 5000 5400
 NoConn ~ 5000 5100
-NoConn ~ 5000 5000
-NoConn ~ 5000 4900
+NoConn ~ 6800 5200
+NoConn ~ 6800 4500
 NoConn ~ 5000 4800
 NoConn ~ 5000 4700
 NoConn ~ 5000 4600
@@ -1551,4 +1549,6 @@ Text Label 6800 5500 0    50   ~ 0
 OUT_SSR
 Text Label 6800 5600 0    50   ~ 0
 OUT_FAN
+Text Label 5000 5000 2    50   ~ 0
+PWM_BUZZER
 $EndSCHEMATC
