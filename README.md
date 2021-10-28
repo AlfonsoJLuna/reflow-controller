@@ -42,7 +42,7 @@ Feel free to build one yourself! The components are easy to source and assemble 
 7. From the Library Manager, install:
     * `Adafruit BusIO 1.7.2`
     * `Adafruit GFX Library 1.10.4`
-    * `Adafruit MAX31855 library 1.2.1`
+    * `Adafruit MAX31855 library 1.3.0`
     * `Adafruit ST7735 and ST7789 Library 1.6.0`
 8. Reset the board in DFU mode: hold BOOT0, hold NRST, release NRST, release BOOT0. `STM32 BOOTLOADER` should appear in Windows Device Manager.
 9. Press the `Upload` button in the Arduino IDE.
