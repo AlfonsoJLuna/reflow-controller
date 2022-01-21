@@ -2,91 +2,155 @@
 #include "Display.h"
 #include "Temperature.h"
 #include <Arduino.h>
+#include <Adafruit_SPIDevice.h>
 
 
-#ifdef USE_MAX31855
-    #include <Adafruit_MAX31855.h>
-    Adafruit_MAX31855 thermocouple(MAXCLK, MAXCS, MAXDO);
-#endif
+Adafruit_SPIDevice spidev(MAXCS, MAXCLK, MAXDO, -1, 1000000);
 
-#ifdef USE_MAX6675
-    #include <max6675.h>
-    MAX6675 thermocouple(MAXCLK, MAXCS, MAXDO);
-#endif
-
-
-static double temp_ambient = 0;
-static double temp_oven = 0;
+static uint16_t temp_oven = 0;
 
 
 void Temperature_Init()
 {
-    #ifdef USE_MAX31855
-        if (thermocouple.begin() == 0)
-        {
-            Display_Text_Center_Small("TC INIT ERR", 0);
-        }
-    #endif
+    if (spidev.begin() == 0)
+    {
+        Display_Text_Center_Small("TC INIT ERR", 0);
+    }
 }
 
-static void Thermocouple_Error()
+static uint32_t SPI_Read_32()
 {
-    uint8_t error_code = thermocouple.readError();
+    uint8_t Buffer[4];
 
-    if (error_code == 0b001)
-    {
-        Display_Text_Center_Small("TC OPEN ERR", 0);
-    }
-    else if (error_code == 0b010)
-    {
-        Display_Text_Center_Small("TC GND SHORT ERR", 0);
-    }
-    else if (error_code == 0b100)
-    {
-        Display_Text_Center_Small("TC VCC SHORT ERR", 0);
-    }
-    else
-    {
-        Display_Text_Center_Small("TC ERR", 0);
-    }
+    spidev.read(Buffer, 4);
+
+    uint32_t Result = 0;
+
+    Result = Buffer[0];
+    Result <<= 8;
+    Result |= Buffer[1];
+    Result <<= 8;
+    Result |= Buffer[2];
+    Result <<= 8;
+    Result |= Buffer[3];
+
+    return Result;
+}
+
+static uint16_t SPI_Read_16()
+{
+    uint8_t Buffer[2];
+
+    spidev.read(Buffer, 2);
+
+    uint16_t Result = 0;
+
+    Result = Buffer[0];
+    Result <<= 8;
+    Result |= Buffer[1];
+
+    return Result;
 }
 
 uint16_t Temperature_Read_Ambient()
 {
-    #ifdef USE_MAX31855
-        double new_temp_ambient = thermocouple.readInternal();
+    uint16_t temp_ambient = 0;
 
-        if (isnan(new_temp_ambient))
+    #ifdef USE_MAX31855
+        uint32_t data = SPI_Read_32();
+
+        // Check the sign
+        if (data & 0x8000)
         {
-            Thermocouple_Error();
+            // Ambient temperature is negative
+            temp_ambient = 0;
         }
         else
         {
-            temp_ambient = new_temp_ambient;
-        }
+            // Ambient temperature is positive
+            uint16_t temp_11b = (data & 0x7FF0) >> 4;
 
-        return constrain(round(temp_ambient), 0, 999);
+            // 0.0625°C / LSB
+            // temp_11b =    0 -> temperature =   0.0ºC
+            // temp_11b =   16 -> temperature =   1.0ºC
+            // temp_11b =  400 -> temperature =  25.0ºC
+            // temp_11b = 2032 -> temperature = 127.0ºC
+            temp_ambient = temp_11b / 16;
+        }
     #endif
 
     #ifdef USE_MAX6675
-        return 21; // MAX6675 does not provide real ambient temperature
+        // MAX6675 does not provide ambient temperature
+        temp_ambient = 0; 
     #endif
+
+    return temp_ambient;
 }
 
 uint16_t Temperature_Read_Oven()
 {
-    double new_temp_oven = thermocouple.readCelsius();
+    #ifdef USE_MAX31855
+        uint32_t data = SPI_Read_32();
 
-    if (isnan(new_temp_oven))
-    {
-        Thermocouple_Error();
-    }
-    else
-    {
-        temp_oven = new_temp_oven;
-    }
+        // Check if the thermocouple is open
+        if (data & 0x1)
+        {
+            Display_Text_Center_Small("TC OPEN ERR", 0);
+        }
+        else
+        {
+            // Check if the thermocouple is shorted to GND
+            if (data & 0x2)
+            {
+                Display_Text_Center_Small("TC GND SHORT ERR", 0);
+            }
 
-    SerialUSB.println(temp_oven);
+            // Check if the thermocouple is shorted to VCC
+            if (data & 0x4)
+            {
+                Display_Text_Center_Small("TC VCC SHORT ERR", 0);
+            }
 
-    return constrain(round(temp_oven + TEMP_OFFSET), 0, 999);
+            // Check the sign
+            if (data & 0x80000000)
+            {
+                // Oven temperature is negative
+                temp_oven = 0;
+            }
+            else
+            {
+                // Oven temperature is positive
+                uint16_t temp_13b = (data & 0x7FFC0000) >> 18;
+
+                // 0.25°C / LSB
+                // temp_13b =    0 -> temperature =    0.0ºC
+                // temp_13b =    4 -> temperature =    1.0ºC
+                // temp_13b =  100 -> temperature =   25.0ºC
+                // temp_13b = 6400 -> temperature = 1600.0ºC
+                temp_oven = temp_13b / 4;
+            }
+        }
+    #endif
+
+    #ifdef USE_MAX6675
+        uint16_t data = SPI_Read_16();
+
+        // Check if the thermocouple is open
+        if (data & 0x4)
+        {
+            // Display_Text_Center_Small("TC OPEN ERR", 0);
+        }
+
+        uint16_t temp_12b = (data & 0x7FF8) >> 3;
+
+        // 0.25ºC / LSB
+        // temp_12b =    0 -> temperature =    0.00ºC
+        // temp_12b =    4 -> temperature =    1.00ºC
+        // temp_12b = 4095 -> temperature = 1023.75ºC
+        temp_oven = temp_12b / 4;
+    #endif
+
+    SerialUSB.println(temp_oven + TEMP_OFFSET);
+
+    return temp_oven + TEMP_OFFSET;
 }
