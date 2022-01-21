@@ -9,7 +9,7 @@ Front | Back
 ## Features
 
 * MCU: STM32F411CEU6 (WeAct MiniF4 "Black Pill" module).
-* Sensors: K-Type thermocouple to digital converter. Compatible with both MAX31855 and MAX6675. MAX31855 is recommended.
+* Sensors: K-Type thermocouple to digital converter. Compatible with both MAX31855 and MAX6675.
 * Display: 2" 240×320 IPS ST7789 (Waveshare 17344 module).
 * Inputs: 3x Push buttons to navigate the menu.
 * Outputs: 2x 5V 2A outputs capable of driving solid state relays as well as inductive loads (mechanical relays, fans).
@@ -42,7 +42,6 @@ Feel free to build one yourself! The components are easy to source and assemble 
 7. From the Library Manager, install:
     * `Adafruit BusIO 1.7.2`
     * `Adafruit GFX Library 1.10.4`
-    * `Adafruit MAX31855 library 1.3.0`
     * `Adafruit ST7735 and ST7789 Library 1.6.0`
 8. Reset the board in DFU mode: hold BOOT0, hold NRST, release NRST, release BOOT0. `STM32 BOOTLOADER` should appear in Windows Device Manager.
 9. Press the `Upload` button in the Arduino IDE.
