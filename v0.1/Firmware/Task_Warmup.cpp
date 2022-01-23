@@ -16,8 +16,8 @@ void Task_Warmup()
     uint64_t last_millis_process = 0;
     uint64_t last_millis_temp = 0;
 
-    Output_1_Set(50);
-    Output_2_Set(50);
+    Output_1_Set(60);
+    Output_2_Set(60);
     Buzzer_Silent();
 
     Display_Clear();
